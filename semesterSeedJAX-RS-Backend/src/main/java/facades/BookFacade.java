@@ -55,8 +55,8 @@ public class BookFacade implements IBookFacade {
     @Override
     public List<Book> getBooks() {
         EntityManager em = getEntityManager();
-        List<Book> books;
-        try {
+        List<Book> books;        try {
+
             books = em.createQuery("SELECT book FROM Book book").getResultList();
         } finally {
             em.close();
