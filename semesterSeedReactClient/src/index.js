@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
 import About from "./pages/About";
+import Documentation from "./pages/Documentation";
 import UserPage from "./pages/UserPage";
 import AdminPage from "./pages/AdminPage";
 import Dashboard from "./pages/Dashboard"
@@ -26,11 +27,14 @@ ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Home}/>
-      <Route path="login" component={Login} />
-      <Route path="logout" component={Logout} />
-      <Route path="about" component={About} />
-      <Route path="user" component={UserPage} />
-      <Route path="admin" component={AdminPage} />
+      <Route path="login" component={Login}/>
+      <Route path="logout" component={Logout}/>
+      <Route path="home" component={Home} />
+      <Route path="documentation" component={Documentation}/>
+      <Route path="products" component={About}/>
+      <Route path="company" component={About} />
+      <Route path="books" component={About}/>
+      <Route path="users" component={About}/>
       <Route path="dashboard" component={Dashboard} onEnter={requireAuth} />
     </Route>
   </Router>

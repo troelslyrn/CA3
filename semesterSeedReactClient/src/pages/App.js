@@ -14,13 +14,15 @@ const App = observer(class App extends Component {
         <nav className="navbar navbar-default" >
           <div className="container-fluid">
             <div className="navbar-header">
-              <a className="navbar-brand" href="#">Semester Seed</a>
+              <a className="navbar-brand" href="#">CA3</a>
             </div>
             <ul className="nav navbar-nav">
-              <li><Link to="/about">About</Link></li>
-              <li><Link to="/user">Page for Users </Link></li>
-              <li><Link to="/admin">Page for Admins</Link></li>
-              <li><Link to="/dashboard">Dashboard (authenticated) </Link> </li>
+              <li><Link to="/home">Home</Link></li>
+              <li><Link to="/documentation">Documentation</Link></li>
+              <li><Link to="/products">Products</Link></li>
+              <li><Link to="/company">Company</Link></li>
+                {auth.isUser ? (<li><Link to="/books">Add/Edit Books</Link></li>) : null}
+                {auth.isAdmin ? (<li><Link to="/users">Add/Edit Users</Link></li>) : null}
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <li className="navbar-text" style={{ color: "steelBlue" }}>{logInStatus}</li>

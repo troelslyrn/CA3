@@ -18,6 +18,11 @@ class AuthenticationHandler {
     return this.token !== null;
   }
 
+  @computed
+  get userPrivilege(){
+    return this.isUser;
+  }
+
   @action
   setToken = (value) => {
     localStorage.token = value;
