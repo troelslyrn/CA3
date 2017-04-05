@@ -1,24 +1,33 @@
 import {observable, computed, action, useStrict} from "mobx";
+import fetchHelper from "./fetchHelpers"
+
+const URL = require("../../package.json").serverURL;
+
 useStrict(true)
-//DataStore for this Demo
+
 class BookStore {
     @observable
     _books = [];
 
-
     constructor() {
-        this._books.replace([
-            {
-                title: "Test title 1",
-                info: "Test info 1"
-            },
-            {
-                title: "Test title 2",
-                info: "Test info 2",
-                moreInfo: "Test moreInfo 1"
-            }
-        ])
+
+        this._books.replace(this.getData());
     }
+
+    @observable messageFromServer = "";
+    @observable errorMessage = "";
+
+
+    @action
+    setErrorMessage(err) {
+        this.errorMessage = err;
+    }
+
+    @action
+    setMessageFromServer(msg) {
+        this.messageFromServer = msg;
+    }
+
 
     @computed
     get bookCount() {
@@ -34,5 +43,33 @@ class BookStore {
     addBook(book) {
         this._books.push(book);
     }
+
+    @action
+    getData = () => {
+        this.errorMessage = "";
+        this.messageFromServer = "";
+        let errorCode = 200;
+        const options = fetchHelper.makeOptions("GET", true);
+        fetch(URL + "api/book/complete", options)
+            .then((res) => {
+                if (res.status > 200 || !res.ok) {
+                    errorCode = res.status;
+                }
+                return res.json();
+            })
+            .then((res) => {
+                if (errorCode !== 200) {
+                    throw new Error(`${res.error.message} (${res.error.code})`);
+                }
+                else {
+                    this.setMessageFromServer(res.message);
+                }
+            }).catch(err => {
+            //This is the only way (I have found) to verify server is not running
+            this.setErrorMessage(fetchHelper.addJustErrorMessage(err));
+        })
+    }
+
 }
-export default new BookStore();
+let bookStore = new BookStore(URL);
+export default bookStore;

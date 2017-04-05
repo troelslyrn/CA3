@@ -5,7 +5,7 @@
  */
 package facades;
 
-import java.awt.print.Book;
+import entity.Book;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
