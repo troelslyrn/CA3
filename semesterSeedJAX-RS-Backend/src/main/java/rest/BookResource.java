@@ -10,6 +10,7 @@ import com.google.gson.GsonBuilder;
 import facades.BookFacade;
 import entity.Book;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.persistence.Persistence;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -35,7 +36,7 @@ public class BookResource {
     @Context
     private UriInfo context;
 
-    BookFacade fac = new BookFacade(Persistence.createEntityManagerFactory("pu", null));
+    BookFacade fac = new BookFacade(Persistence.createEntityManagerFactory("pu_development", null));
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     public BookResource() {
@@ -63,6 +64,7 @@ public class BookResource {
     }
 
     @POST
+    @RolesAllowed("User")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createBook(String bookJSON) {
@@ -70,14 +72,14 @@ public class BookResource {
         return Response.status(Response.Status.OK).entity(gson.toJson(book)).build();
     }
 
-  @DELETE
+    @DELETE
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteBook(@PathParam("id") int id) {
         Book book = fac.deleteBook(fac.getBookById(id));
         return Response.status(Response.Status.OK).entity(gson.toJson(book)).build();
     }
-    
+
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)

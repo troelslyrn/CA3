@@ -38,7 +38,7 @@ class AdminStore {
           this.setMessageFromServer(res.message);
         }
       }).catch(err => {
-        //This is the only way (I have found) to veryfy server is not running
+        //This is the only way (I have found) to verify server is not running
         this.setErrorMessage(fetchHelper.addJustErrorMessage(err));
       })
   }

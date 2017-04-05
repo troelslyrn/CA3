@@ -14,6 +14,7 @@ import AdminPage from "./pages/AdminPage";
 import Dashboard from "./pages/Dashboard"
 import bookStore from "./stores/bookStore";
 import Details from "./pages/Details";
+import Company from "./pages/Company";
 import auth from "./authorization/auth";
 
 
@@ -34,10 +35,10 @@ ReactDOM.render((
             <Route path="logout" component={Logout}/>
             <Route path="home" component={Home}/>
             <Route path="documentation" component={Documentation}/>
-            <Route path="products" component={Product} books={bookStore.books}/>
+            <Route path="products" component={Product} bookStore={bookStore}/>
             <Route path="products/details/:id" component={Details}
                    books={bookStore.books}/>
-            <Route path="company" component={About}/>
+            <Route path="company" component={Company}/>
             <Route path="books" component={About}/>
             <Route path="users" component={About}/>
             <Route path="dashboard" component={Dashboard} onEnter={requireAuth}/>

@@ -6,17 +6,12 @@ const URL = require("../../package.json").serverURL;
 useStrict(true)
 
 class BookStore {
+
     @observable
     _books = [];
 
-    constructor() {
-
-        this._books.replace(this.getData());
-    }
-
     @observable messageFromServer = "";
     @observable errorMessage = "";
-
 
     @action
     setErrorMessage(err) {
@@ -27,7 +22,6 @@ class BookStore {
     setMessageFromServer(msg) {
         this.messageFromServer = msg;
     }
-
 
     @computed
     get bookCount() {
