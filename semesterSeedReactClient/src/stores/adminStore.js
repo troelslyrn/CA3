@@ -45,23 +45,23 @@ class AdminStore {
             this.setErrorMessage(fetchHelper.addJustErrorMessage(err));
         })
     }
-    @action
-    setData = () => {
-        this.errorMessage = "";
-        this.messageFromServer = "";
-        const options = fetchHelper.makeOptions("POST", true);
-        fetch(URL + "api/demouser/complete", options)
-            .then((res) => {
-                return res.json();
-            })
-            .then((res) => {
-                this.setData(res);
-                console.log(res);
-            }).catch(err => {
-            //This is the only way (I have found) to verify server is not running
-            this.setErrorMessage(fetchHelper.addJustErrorMessage(err));
-        })
-    }
+    // @action
+    // setData = () => {
+    //     this.errorMessage = "";
+    //     this.messageFromServer = "";
+    //     const options = fetchHelper.makeOptions("POST", true);
+    //     fetch(URL + "api/demouser/complete", options)
+    //         .then((res) => {
+    //             return res.json();
+    //         })
+    //         .then((res) => {
+    //             this.setData(res);
+    //             console.log(res);
+    //         }).catch(err => {
+    //         //This is the only way (I have found) to verify server is not running
+    //         this.setErrorMessage(fetchHelper.addJustErrorMessage(err));
+    //     })
+    // }
 }
 let adminStore = new AdminStore(URL);
 
