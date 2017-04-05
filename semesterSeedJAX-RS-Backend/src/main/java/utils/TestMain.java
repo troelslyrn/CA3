@@ -5,10 +5,10 @@
  */
 package utils;
 
-import entity.Book;
-import facades.BookFacade;
+import facades.UserFacade;
 import java.util.List;
 import javax.persistence.Persistence;
+import security.IUser;
 
 /**
  *
@@ -21,10 +21,10 @@ public class TestMain {
      */
     public static void main(String[] args) {
 
-        BookFacade fac = new BookFacade(Persistence.createEntityManagerFactory("pu_development"));
+        UserFacade fac = new UserFacade(Persistence.createEntityManagerFactory("pu_development"));
         
-        List<Book> books = fac.getBooks();
-        System.out.println(books);
+        List<IUser> users = fac.getAllUsers();
+        System.out.println(users);
     }
     
 }

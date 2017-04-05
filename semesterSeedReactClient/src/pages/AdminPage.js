@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {observer} from "mobx-react";
 import userData from "../stores/adminStore";
 
-const AdminPage = observer(
+@observer
   class AdminPage extends Component {
 
     componentWillMount() {
@@ -16,16 +16,15 @@ const AdminPage = observer(
     render() {
       return (
         <div>
-          <h2>Admins</h2>
-          <p>This message is fetched from the server if you were properly logged in</p>
-          <div className="msgFromServer">
-          {userData.messageFromServer}
-          </div>
-          <h4 style={{color: "red"}}>{userData.errorMessage}</h4>
+            <h2>List of Users</h2>
+            <ul>
+                {userData.users.map((user, index) =>
+                    <li key={index}>{user.username}</li>)}
+            </ul>
         </div>
       )
     }
 
   }
-)
+
 export default AdminPage;

@@ -40,7 +40,7 @@ ReactDOM.render((
                    books={bookStore.books}/>
             <Route path="company" component={Company}/>
             <Route path="books" component={About}/>
-            <Route path="users" component={About}/>
+            <Route path="users" component={AdminPage}/>
             <Route path="dashboard" component={Dashboard} onEnter={requireAuth}/>
         </Route>
     </Router>

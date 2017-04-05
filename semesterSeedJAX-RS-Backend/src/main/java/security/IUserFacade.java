@@ -20,5 +20,6 @@ public interface IUserFacade {
     List<String> authenticateUser(String userName, String password);
 
     IUser getUserByUserId(String id);
+    List<IUser> getAllUsers();
     
 }

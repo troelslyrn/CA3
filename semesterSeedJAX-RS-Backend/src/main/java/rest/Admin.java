@@ -13,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 public class Admin {
   
   @GET
+  @Path("complete")
   @Produces(MediaType.APPLICATION_JSON)
   public String getSomething(){
     String now = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss").format(new Date());
