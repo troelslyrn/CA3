@@ -8,7 +8,7 @@ package rest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import facades.BookFacade;
-import java.awt.print.Book;
+import entity.Book;
 import java.util.List;
 import javax.persistence.Persistence;
 import javax.ws.rs.core.Context;
