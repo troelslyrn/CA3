@@ -23,6 +23,11 @@ class BookStore {
         this.messageFromServer = msg;
     }
 
+    @action
+    setData(res) {
+        this._books.replace(res);
+    }
+
     @computed
     get bookCount() {
         return this._books.length;
@@ -46,18 +51,18 @@ class BookStore {
         const options = fetchHelper.makeOptions("GET", true);
         fetch(URL + "api/book/complete", options)
             .then((res) => {
-                if (res.status > 200 || !res.ok) {
-                    errorCode = res.status;
-                }
+                //if (res.status > 200 || !res.ok) {
+                 //   errorCode = res.status;
+                //}
                 return res.json();
             })
             .then((res) => {
-                if (errorCode !== 200) {
-                    throw new Error(`${res.error.message} (${res.error.code})`);
-                }
-                else {
-                    this.setMessageFromServer(res.message);
-                }
+                //if (errorCode !== 200) {
+                  //  throw new Error(`${res.error.message} (${res.error.code})`);
+                //}
+                //else {
+                    this.setData(res);
+                //}
             }).catch(err => {
             //This is the only way (I have found) to verify server is not running
             this.setErrorMessage(fetchHelper.addJustErrorMessage(err));

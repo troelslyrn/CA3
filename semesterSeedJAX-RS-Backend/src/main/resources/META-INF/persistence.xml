@@ -13,7 +13,7 @@
       <property name="javax.persistence.jdbc.password" value="pw"/>
       <property name="eclipselink.logging.level" value="WARNING"/>
       <property name="eclipselink.canonicalmodel.subpackage" value="test"/>
-      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>
   </persistence-unit>
 </persistence>

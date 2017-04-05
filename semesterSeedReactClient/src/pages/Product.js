@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { Link, hashHistory} from "react-router";
+import {Link, hashHistory} from "react-router";
 class Product extends Component {
 
     componentWillMount() {
@@ -14,13 +14,13 @@ class Product extends Component {
                 <h4>All our great books </h4>
                 <ul>
                     {this.props.route.bookStore.books.map((book, index) => <li key={index}>
-                        {book.title} <Link to={`products/details/${index}`}>(details)</Link></li>)}
+                        {book.Title} <Link to={`products/details/${index}`}>(details)</Link></li>)}
                 </ul>
             </div>
         )
     }
 
-    onNewBook = () =>{
+    onNewBook = () => {
         hashHistory.push('products/newBook');
     }
 }
