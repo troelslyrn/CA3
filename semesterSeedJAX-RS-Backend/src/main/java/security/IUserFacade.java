@@ -13,7 +13,11 @@ import java.util.List;
  * @author lam
  */
 public interface IUserFacade {
-
+    User createUser (User u);
+    List<User> getUsers();
+    User editUser(User u);
+    User deleteUser(User u);
+    
     /*
     Return the Roles if users could be authenticated, otherwise null
      */
