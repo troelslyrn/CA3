@@ -1,5 +1,7 @@
 import React, {Component} from "react";
-import {Link, hashHistory} from "react-router";
+import {hashHistory, Link, Route} from "react-router";
+import NewBook from "./NewBook"
+
 class Product extends Component {
 
     componentWillMount() {
@@ -16,6 +18,7 @@ class Product extends Component {
                     {this.props.route.bookStore.books.map((book, index) => <li key={index}>
                         {book.Title} <Link to={`products/details/${index}`}>(details)</Link></li>)}
                 </ul>
+
             </div>
         )
     }

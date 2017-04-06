@@ -16,8 +16,7 @@ public class UserFacade implements IUserFacade {
 
 
     EntityManagerFactory emf;
-
-UserFacade userfacade;
+    UserFacade userfacade;
  
 
 
@@ -44,6 +43,7 @@ UserFacade userfacade;
   @Override
     public User createUser (User u) {
         EntityManager em = getEntityManager();
+        
         try {
             em.getTransaction().begin();
             em.persist(u);
