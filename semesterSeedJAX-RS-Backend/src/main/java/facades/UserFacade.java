@@ -29,7 +29,7 @@ public class UserFacade implements IUserFacade {
     }
 
     @Override
-    public IUser getUserByUserId(String id) {
+    public User getUserByUserId(String id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(User.class, id);
@@ -86,7 +86,7 @@ public class UserFacade implements IUserFacade {
         //Book book;
         try {
             em.getTransaction().begin();
-            u = em.find(User.class, u);
+            u = em.find(User.class, u.getUserName());
             em.remove(u);
             em.getTransaction().commit();
         } finally {

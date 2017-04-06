@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import entity.User;
 import facades.UserFacade;
 import java.util.List;
@@ -12,9 +11,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.Persistence;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -74,5 +75,14 @@ public class UserResource {
         User u = fac.createUser(user);
         return Response.status(Response.Status.OK).entity(gson.toJson(u)).build();
         //return Response.status(Response.Status.OK).entity(userJSON).build();
+    }
+     @DELETE
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteUser(@PathParam("id") String id) {
+        User user = fac.getUserByUserId(id);
+        
+        fac.deleteUser(user);
+        return Response.status(Response.Status.OK).entity(gson.toJson(user)).build();
     }
 }
