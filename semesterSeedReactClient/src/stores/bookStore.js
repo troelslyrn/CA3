@@ -46,6 +46,16 @@ class BookStore {
     }
 
     @action
+    updateBook(book) {
+        const options = fetchHelper.makeOptions("PUT", true, book);
+        console.log(book);
+        fetch(URL + "api/book/" + book.id, options)
+            .then((res) => {
+            return res.json();
+            })
+    }
+
+    @action
     deleteBook(id) {
         const options = fetchHelper.makeOptions("DELETE", true, id);
         fetch(URL + "api/book/" + id, options)

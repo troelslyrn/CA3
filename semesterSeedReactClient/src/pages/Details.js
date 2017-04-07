@@ -4,6 +4,10 @@ import bookStore from "../stores/bookStore";
 
 export default class Details extends React.Component {
 
+    updateBook(book) {
+        bookStore.updateBook(book);
+    }
+
     deleteBook(id) {
         bookStore.deleteBook(id);
     }
@@ -15,10 +19,12 @@ export default class Details extends React.Component {
         })[0];
         return (
             <div>
-                <h3 style={{color: "steelblue"}}>Detailed info for the title: {book.title}</h3>
-                <h4> {book.info}</h4>
-                <h4>{book.moreInfo}</h4>
+                <p><input id="title" type="text" placeholder="title" defaultValue={book.title}/></p>
+                <p><input id="info" type="text" placeholder="info" defaultValue={book.info}/></p>
+                <p><input id="moreInfo" type="text" placeholder="moreInfo" defaultValue={book.moreInfo}/></p>
+
                 <Link to="products">
+                    <button onClick={this.updateBook.bind(this, book)}>Update</button>
                     <button onClick={this.deleteBook.bind(this, book.id)}>Delete</button>
                 </Link>
                 <br />
