@@ -1,7 +1,8 @@
 import {observable, action, computed} from "mobx";
 import fetchHelper from "./fetchHelpers"
 const URL = require("../../package.json").serverURL;
-import newUser from "../pages/NewUser"
+
+
 
 
 /* encapsulates Data related to Admins */
@@ -26,14 +27,28 @@ class AdminStore {
     }
 
     @computed
+    get userCount() {
+        return this._users.length;
+    }
+    @computed
     get users() {
         return this._users;
+    }
+
+    @action
+    addUser(user) {
+        const options = fetchHelper.makeOptions("POST", true, user);
+        fetch(URL + "api/demouser", options)
+            .then((res) => {
+                return res.json();
+            })
     }
 
     @action
     getData = () => {
         this.errorMessage = "";
         this.messageFromServer = "";
+
         const options = fetchHelper.makeOptions("GET", true);
         fetch(URL + "api/demouser/complete", options)
             .then((res) => {
@@ -47,14 +62,7 @@ class AdminStore {
             this.setErrorMessage(fetchHelper.addJustErrorMessage(err));
         })
     }
-    @action
-    addUser(user) {
-        const options = fetchHelper.makeOptions("POST", true, user);
-        fetch(URL + "api/demouser", options)
-            .then((res) => {
-                return res.json();
-            })
-    }
+
 
 }
 let adminStore = new AdminStore(URL);

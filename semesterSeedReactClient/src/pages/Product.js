@@ -27,7 +27,7 @@ class Product extends Component {
     }
 
     onNewBook = () => {
-        hashHistory.push('products/newBook');
+        hashHistory.push('products/new-book');
     }
 }
 export default Product;

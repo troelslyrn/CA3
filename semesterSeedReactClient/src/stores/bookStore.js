@@ -1,6 +1,5 @@
 import {observable, computed, action, useStrict} from "mobx";
 import fetchHelper from "./fetchHelpers"
-
 const URL = require("../../package.json").serverURL;
 
 useStrict(true)

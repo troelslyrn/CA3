@@ -12,7 +12,7 @@ export default class NewUser extends React.Component{
     }
 
     saveUser = () =>{
-        userData.adduser(this.state.user);
+        userData.addUser(this.state.user);
         //Clear input fields, to allow for a new "new book"
         this.setState({user:{userName : "",passwordHash: ""}});
         event.preventDefault();//?
