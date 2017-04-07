@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {hashHistory, Link, Route} from "react-router";
 import {observer} from "mobx-react"
-import NewBook from "./NewBook"
 
 @observer
 class Product extends Component {

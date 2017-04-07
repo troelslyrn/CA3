@@ -42,7 +42,7 @@ public class BookFacade implements IBookFacade {
 
     @Override
     public Book getBookById(int id) {
-           EntityManager em = getEntityManager();
+        EntityManager em = getEntityManager();
         Book book;
         try {
             book = em.find(Book.class, id);
@@ -55,7 +55,8 @@ public class BookFacade implements IBookFacade {
     @Override
     public List<Book> getBooks() {
         EntityManager em = getEntityManager();
-        List<Book> books;        try {
+        List<Book> books;
+        try {
 
             books = em.createQuery("SELECT book FROM Book book").getResultList();
         } finally {
@@ -66,7 +67,7 @@ public class BookFacade implements IBookFacade {
 
     @Override
     public Book editBook(Book book) {
-          EntityManager em = getEntityManager();
+        EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
             em.merge(book);
@@ -79,12 +80,12 @@ public class BookFacade implements IBookFacade {
 
     @Override
     public Book deleteBook(Book book) {
-         EntityManager em = getEntityManager();
-        //Book book;
+        EntityManager em = getEntityManager();
+        Book b;
         try {
             em.getTransaction().begin();
-            book = em.find(Book.class, book);
-            em.remove(book);
+            b = em.find(Book.class, book.getId());
+            em.remove(b);
             em.getTransaction().commit();
         } finally {
             em.close();

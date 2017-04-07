@@ -85,8 +85,8 @@ public class BookResource {
     @RolesAllowed("User")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response editPerson(String personJSON) {
-        Book book = gson.fromJson(personJSON, Book.class);
+    public Response editBook(String bookJSON) {
+        Book book = gson.fromJson(bookJSON, Book.class);
         book = fac.editBook(book);
         return Response.status(Response.Status.OK).entity(gson.toJson(book)).build();
     }
