@@ -44,7 +44,7 @@ ReactDOM.render((
             <Route path="books" component={About}/>
             <Route path="users" component={AdminPage}/>
             <Route path="dashboard" component={Dashboard} onEnter={requireAuth}/>
-            <Route path="products/newBook" component={NewBook} />
+            <Route path="products/new-book" component={NewBook} />
             <Route path="products/newUser" component={NewUser} />
         </Route>
     </Router>
