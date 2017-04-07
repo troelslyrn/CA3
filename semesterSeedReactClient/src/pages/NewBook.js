@@ -1,5 +1,7 @@
 import React from "react"
 import bookStore from "../stores/bookStore";
+import {observable, action, computed} from "mobx";
+import fetchHelper from "../stores/fetchHelpers";
 
 export default class NewBook extends React.Component{
   constructor(){
@@ -44,5 +46,22 @@ export default class NewBook extends React.Component{
       </div>
     )
   }
+    @action
+    setData = () => {
+        this.errorMessage = "";
+        this.messageFromServer = "";
+        const options = fetchHelper.makeOptions("POST", true);
+        fetch(URL + "api/book/", options)
+            .then((res) => {
+                return res.json();
+            })
+            .then((res) => {
+                this.setData(res);
+                console.log(res);
+            }).catch(err => {
+            //This is the only way (I have found) to verify server is not running
+            this.setErrorMessage(fetchHelper.addJustErrorMessage(err));
+        })
+    }
 
 }

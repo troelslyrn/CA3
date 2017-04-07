@@ -4,6 +4,8 @@ import userData from "../stores/adminStore";
 const URL = require("../../package.json").serverURL;
 import fetchHelper from "../stores/fetchHelpers"
 import {observable, action, computed} from "mobx";
+import {hashHistory, Link, Route} from "react-router";
+
 
 
 @observer
@@ -38,19 +40,24 @@ import {observable, action, computed} from "mobx";
             this.setErrorMessage(fetchHelper.addJustErrorMessage(err));
         })
     }
-
+//?
     componentWillMount() {
       /*
       This will fetch data each time you navigate to this route
       Move to constructor, if only required once, or add "logic" to determine when data should be "refetched"
       */
-       // var users = userData.getData();
+
       userData.getData();
+    }
+    @action
+    addUser(user) {
+        var users = userData.users;
+        users.push(user);
     }
 
     render() {
-
         var users = userData.users;
+
         var lines = users.map((user, index)=> <tr key={index}>
 
 
@@ -63,7 +70,9 @@ import {observable, action, computed} from "mobx";
 
         </tr>);
       return (
+
         <div className="App">
+            <button className="btn btn-default btn-sm" onClick={this.onNewBook}>Add user</button>
 
                 <table className="table table-striped">
                     <thead>
@@ -78,12 +87,18 @@ import {observable, action, computed} from "mobx";
                 </table>
 
 
+
                 {/*<ul>*/}
                 {/*{userData.users.map((user, index) =>*/}
                     {/*<li key={index}>{user.username}</li>)}*/}
             {/*</ul>*/}
         </div>
+
+
       )
+    }
+    onNewBook = () => {
+        hashHistory.push('products/newUser');
     }
 
   }

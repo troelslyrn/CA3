@@ -17,6 +17,7 @@ import Details from "./pages/Details";
 import Company from "./pages/Company";
 import auth from "./authorization/auth";
 import NewBook from  "./pages/NewBook"
+import NewUser from "./pages/NewUser";
 
 
 function requireAuth(nextState, replace) {
@@ -44,6 +45,7 @@ ReactDOM.render((
             <Route path="users" component={AdminPage}/>
             <Route path="dashboard" component={Dashboard} onEnter={requireAuth}/>
             <Route path="products/newBook" component={NewBook} />
+            <Route path="products/newUser" component={NewUser} />
         </Route>
     </Router>
 ), document.getElementById('root'))
