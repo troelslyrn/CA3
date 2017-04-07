@@ -48,21 +48,12 @@ class AdminStore {
         })
     }
     @action
-    setDATA = () => {
-        this.errorMessage = "";
-        this.messageFromServer = "";
-        const options = fetchHelper.makeOptions("POST", true, );
-        fetch(URL + "api/demouser/", options)
+    addUser(user) {
+        const options = fetchHelper.makeOptions("POST", true, user);
+        fetch(URL + "api/demouser", options)
             .then((res) => {
                 return res.json();
             })
-            .then((res) => {
-                return res;
-                console.log(res);
-            }).catch(err => {
-            //This is the only way (I have found) to verify server is not running
-            this.setErrorMessage(fetchHelper.addJustErrorMessage(err));
-        })
     }
 
 }
