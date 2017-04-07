@@ -13,7 +13,7 @@ class BookStore {
     @observable messageFromServer = "";
     @observable errorMessage = "";
 
-    constructor(){
+    constructor() {
         this.getData();
     }
 
@@ -60,16 +60,16 @@ class BookStore {
         fetch(URL + "api/book/complete", options)
             .then((res) => {
                 //if (res.status > 200 || !res.ok) {
-                 //   errorCode = res.status;
+                //   errorCode = res.status;
                 //}
                 return res.json();
             })
             .then((res) => {
                 //if (errorCode !== 200) {
-                  //  throw new Error(`${res.error.message} (${res.error.code})`);
+                //  throw new Error(`${res.error.message} (${res.error.code})`);
                 //}
                 //else {
-                    this.setData(res);
+                this.setData(res);
                 //}
             }).catch(err => {
             //This is the only way (I have found) to verify server is not running
