@@ -73,6 +73,7 @@ public class BookResource {
     }
 
     @DELETE
+    @RolesAllowed("User")
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteBook(@PathParam("id") int id) {
@@ -81,6 +82,7 @@ public class BookResource {
     }
 
     @PUT
+    @RolesAllowed("User")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response editPerson(String personJSON) {
