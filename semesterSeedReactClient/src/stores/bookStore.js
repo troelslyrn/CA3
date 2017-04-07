@@ -6,15 +6,10 @@ useStrict(true)
 
 class BookStore {
 
-    @observable
-    _books = [];
+    @observable _books = [];
 
     @observable messageFromServer = "";
     @observable errorMessage = "";
-
-    constructor() {
-        this.getData();
-    }
 
     @action
     setErrorMessage(err) {
@@ -47,6 +42,15 @@ class BookStore {
         fetch(URL + "api/book", options)
             .then((res) => {
                 return res.json();
+            })
+    }
+
+    @action
+    deleteBook(id) {
+        const options = fetchHelper.makeOptions("DELETE", true, id);
+        fetch(URL + "api/book/" + id, options)
+            .then((res) => {
+            return res.json();
             })
     }
 
