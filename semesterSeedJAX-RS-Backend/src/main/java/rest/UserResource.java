@@ -9,6 +9,7 @@ import facades.UserFacade;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.security.RolesAllowed;
 import javax.persistence.Persistence;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -25,7 +26,7 @@ import security.IUser;
 import security.PasswordStorage;
 
 @Path("demouser")
-//@RolesAllowed("UserResource")
+@RolesAllowed("Admin")
 public class UserResource {
 
     @Context
