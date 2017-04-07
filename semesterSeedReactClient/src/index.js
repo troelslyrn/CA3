@@ -19,7 +19,6 @@ import auth from "./authorization/auth";
 import NewBook from  "./pages/NewBook"
 import NewUser from "./pages/NewUser";
 
-
 function requireAuth(nextState, replace) {
     if (!auth.loggedIn) {
         replace({
@@ -28,7 +27,6 @@ function requireAuth(nextState, replace) {
         })
     }
 }
-
 ReactDOM.render((
     <Router history={hashHistory}>
         <Route path="/" component={App}>

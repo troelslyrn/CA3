@@ -14,39 +14,25 @@ import {hashHistory, Link, Route} from "react-router";
     constructor (props){
         super(props);
         this.delete = this.delete.bind(this);
+      //  this.update = this.update().bind(this);
+    }
+    // @action
+    // setErrorMessage(err) {
+    //     this.errorMessage = err;
+    // }
 
-    }
-    @action
-    setErrorMessage(err) {
-        this.errorMessage = err;
-    }
-    @action
-    delete(event) {
-        this.errorMessage = "";
-        this.messageFromServer = "";
-        let errorCode = 200;
-        let username = event.target.id;
-        console.log("rwrttr" + username);
-        const options = fetchHelper.makeOptions("DELETE", true);
-        fetch(URL + "api/demouser/"+username, options)
-            .then((res) => {
-                return res.json();
-            })
-            .then((res) => {
-                this.setData(res);
-                console.log(res);
-            }).catch(err => {
-            //This is the only way (I have found) to verify server is not running
-            this.setErrorMessage(fetchHelper.addJustErrorMessage(err));
-        })
-    }
+    delete = (event) => {
+
+        var username = event.target.id;
+        userData.delete(username);
+}
+
 //?
     componentWillMount() {
       /*
       This will fetch data each time you navigate to this route
       Move to constructor, if only required once, or add "logic" to determine when data should be "refetched"
       */
-
       userData.getData();
     }
     @action
@@ -55,13 +41,10 @@ import {hashHistory, Link, Route} from "react-router";
         users.push(user);
     }
 
-
     render() {
         var users = userData.users;
 
         var lines = users.map((user, index)=> <tr key={index}>
-
-
 
             <td>{user.username}</td>
 
@@ -70,6 +53,7 @@ import {hashHistory, Link, Route} from "react-router";
             </td>
 
         </tr>);
+
       return (
 
         <div className="App">
@@ -87,14 +71,11 @@ import {hashHistory, Link, Route} from "react-router";
                     </tbody>
                 </table>
 
-
-
                 {/*<ul>*/}
                 {/*{userData.users.map((user, index) =>*/}
                     {/*<li key={index}>{user.username}</li>)}*/}
             {/*</ul>*/}
         </div>
-
 
       )
     }
@@ -105,3 +86,22 @@ import {hashHistory, Link, Route} from "react-router";
   }
 
 export default AdminPage;
+
+
+
+
+
+// @action
+// update(event) {
+//     this.errorMessage = "";
+//     this.messageFromServer = "";
+//     let errorCode = 200;
+//     let username = event.target.id;
+//     console.log("rwrttr" + username);
+//     const options = fetchHelper.makeOptions("PUT", true);
+//     fetch(URL + "api/demouser/"+username, options)
+//         .then((res) => {
+//             return res.json();
+//         })
+//
+// }

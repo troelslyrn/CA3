@@ -63,6 +63,27 @@ class AdminStore {
         })
     }
 
+    @action
+    delete(username) {
+        this.errorMessage = "";
+        this.messageFromServer = "";
+        let errorCode = 200;
+      //  let username = event.target.id;
+        console.log("rwrttr" + username);
+        const options = fetchHelper.makeOptions("DELETE", true);
+        fetch(URL + "api/demouser/"+username, options)
+            // .then((res) => {
+            //     return res.json();
+            // })
+            .then(() => {
+              this.getData();
+
+            }).catch(err => {
+            //This is the only way (I have found) to verify server is not running
+            this.setErrorMessage(fetchHelper.addJustErrorMessage(err));
+        })
+    }
+
 
 }
 let adminStore = new AdminStore(URL);

@@ -10,7 +10,6 @@ class Product extends Component {
         this.props.route.bookStore.getData();
     }
 
-
     render() {
         return (
             <div>

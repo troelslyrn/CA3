@@ -31,8 +31,6 @@ export default class NewUser extends React.Component{
         this.setState({user});
     }
 
-
-
     render(){
         return (
             <div>
