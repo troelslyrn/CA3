@@ -12,7 +12,7 @@ class Product extends Component {
         return (
             <div>
                 <h2>Our Products</h2>
-                <Link to="products/newBook">Add Book</Link>
+                <Link to="products/new-book">Add Book</Link>
                 <h4>We have {this.props.route.bookStore.bookCount} books in the database</h4>
                 <ul>
                     {this.props.route.bookStore.books.map((book, index) => <li key={index}>
