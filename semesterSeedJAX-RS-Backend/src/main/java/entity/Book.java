@@ -23,11 +23,11 @@ public class Book implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String Title;
+    private String title;
 
-    private String Info;
+    private String info;
 
-    private String MoreInfo;
+    private String moreInfo;
 
     public Book() {
     }
@@ -41,27 +41,29 @@ public class Book implements Serializable {
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
-    public void setTitle(String Title) {
-        this.Title = Title;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getInfo() {
-        return Info;
+        return info;
     }
 
-    public void setInfo(String Info) {
-        this.Info = Info;
+    public void setInfo(String info) {
+        this.info = info;
     }
 
     public String getMoreInfo() {
-        return MoreInfo;
+        return moreInfo;
     }
 
-    public void setMoreInfo(String MoreInfo) {
-        this.MoreInfo = MoreInfo;
+    public void setMoreInfo(String moreInfo) {
+        this.moreInfo = moreInfo;
     }
+    
+    
 
 }

@@ -13,6 +13,10 @@ class BookStore {
     @observable messageFromServer = "";
     @observable errorMessage = "";
 
+    constructor(){
+        this.getData();
+    }
+
     @action
     setErrorMessage(err) {
         this.errorMessage = err;
@@ -40,7 +44,11 @@ class BookStore {
 
     @action
     addBook(book) {
-        this._books.push(book);
+        const options = fetchHelper.makeOptions("POST", true, book);
+        fetch(URL + "api/book", options)
+            .then((res) => {
+                return res.json();
+            })
     }
 
     @action

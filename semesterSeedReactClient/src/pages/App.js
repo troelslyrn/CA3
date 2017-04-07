@@ -21,7 +21,7 @@ const App = observer(class App extends Component {
                             <li><Link to="/documentation">Documentation</Link></li>
                             <li><Link to="/products">Products</Link></li>
                             <li><Link to="/company">Company</Link></li>
-                            {auth.isUser ? (<li><Link to="/books">Add/Edit Books</Link></li>) : null}
+                            {auth.isUser ? (<li><Link to="/products/new-book">Add/Edit Books</Link></li>) : null}
                             {auth.isAdmin ? (<li><Link to="/users">Add/Edit Users</Link></li>) : null}
                         </ul>
                         <ul className="nav navbar-nav navbar-right">

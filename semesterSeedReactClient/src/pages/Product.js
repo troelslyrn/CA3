@@ -12,11 +12,11 @@ class Product extends Component {
         return (
             <div>
                 <h2>Our Products</h2>
-                <button className="btn btn-default btn-sm" onClick={this.onNewBook}>Add Book</button>
-                <h4>All our great books </h4>
+                <Link to="products/newBook">Add Book</Link>
+                <h4>We have {this.props.route.bookStore.bookCount} books in the database</h4>
                 <ul>
                     {this.props.route.bookStore.books.map((book, index) => <li key={index}>
-                        {book.Title} <Link to={`products/details/${index}`}>(details)</Link></li>)}
+                        {book.title} <Link to={`products/details/${index}`}>(details)</Link></li>)}
                 </ul>
 
             </div>
